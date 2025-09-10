@@ -5,7 +5,7 @@
   </head>
   <body>
     <script src="script.js"></script>
-    <button id='refresh' onClick='getGameData()'>Loading...</button>
+    <button id='refresh' onClick='fetchGameData().then((data) => console.log('fetched'))'>Loading...</button>
     <p>Sample Text</p>
   </body>
 </html>
