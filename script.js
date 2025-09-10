@@ -12,6 +12,3 @@ async function fetchGameData() {
   }
 }
 
-function getGameData() {
-  return await fetchGameData();
-}
