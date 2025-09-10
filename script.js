@@ -1,11 +1,17 @@
-function getGameData() {
-  var options = {
-    method: 'get'
-  };
-  var url = 'https://slay-the-relics.baalorlord.tv/api/v2/game-state/601604206';
-  var response = UrlFetchApp.fetch(url, options);
-  var gameData = JSON.parse(response.getContentText()).data;
+async function fetchGameData() {
+  const url = 'https://slay-the-relics.baalorlord.tv/api/v2/game-state/601604206';
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json(); // Or .text() for plain text
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
 
-  console.log(gameData[0])
-  return gameData;
+function getGameData() {
+  return await fetchGameData();
 }
