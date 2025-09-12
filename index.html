@@ -1,11 +1,13 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
   <head>
-    <title>Placeholder Title</title>
+    <title>Merlathon Decklist Viewer</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <script src="script.js"></script>
-    <button id='refresh' onClick='fetchGameData().then((data) => console.log("fetched"))'>Loading...</button>
-    <p>Sample Text</p>
+    <button id='refresh' onClick='fetchGameData().then((data) => console.log("fetched"))'>⟳ Refresh</button>
+    <p>Decklists:</p>
+    <div id='deck-container'></div>
   </body>
 </html>
