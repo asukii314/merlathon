@@ -24,14 +24,19 @@ async function fetchGameData() {
             }
             const data = await response.json();
 
-            parent = document.createElement("div");
-            parent.className = `contestant-decklist ${contestant}`;
-            
+            wrapper = document.createElement("div");
+            wrapper.className = "decklist-wrapper";
 
             header = document.createElement("div");
             header.textContent = contestant;
             header.className = "contestant-header";
-            parent.appendChild(header);            
+            wrapper.appendChild(header);          
+
+            parent = document.createElement("div");
+            parent.className = `contestant-decklist ${contestant}`;
+            wrapper.appendChild(parent);
+
+  
 
             for(let card of data.deck) {
                 renderCard(card, parent)
@@ -41,7 +46,7 @@ async function fetchGameData() {
             if(prevDecklist.length > 0) {
                 prevDecklist[0].remove();
             }
-            rootElem.appendChild(parent);
+            rootElem.appendChild(wrapper);
 
 //            console.log(data); // do something with the data!
     
@@ -60,16 +65,24 @@ function getUpgradeInfo(str) {
   return index !== -1 ? str.slice(index) : '';
 }
 
+function getImageUrl(cardID) {
+    let stripped = stripUpgradeInfo(cardID)
+    if(stripped === cardID) {
+        return `https://raw.githubusercontent.com/Spireblight/slay-the-relics/refs/heads/master/assets/sts1/card-images/${stripped.toLowerCase().replaceAll(" ", "")}.png`
+    } else {
+        return `https://raw.githubusercontent.com/Spireblight/slay-the-relics/refs/heads/master/assets/sts1/card-images/${stripped.toLowerCase().replaceAll(" ", "")}plus1.png`
+    }
+    
+}
+
 function renderCard(cardID, parent) {
     
     card = document.createElement("div");
     card.className = 'card-container';
     // card.textContent = name;
 
-    card.innerHTML = `
-        <div class="card test">
-            ${CARD_DATA[stripUpgradeInfo(cardID)].NAME}${getUpgradeInfo(cardID)}
-        </div>`;
+    card.innerHTML =
+        `<div class="card-image" style="background-image: url(&quot;${getImageUrl(cardID)}&quot;);"></div>`;
 
     parent.appendChild(card);
 

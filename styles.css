@@ -4,9 +4,22 @@
 
 .contestant-decklist {
 	margin: 15px 20px 0px 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 #deck-container {
 	display: flex;
 
+}
+
+.card-image {
+	aspect-ratio: 12.361/15.926;
+	background-size: cover;
+	width: 120px;
+}
+
+.decklist-wrapper {
+	width: 50%;
 }
