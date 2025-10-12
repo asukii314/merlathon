@@ -8,8 +8,8 @@ const TWITCH_IDS = {
     
 // static placeholder for testing
 const CONTESTANTS = [
-    'asukii',
-    'jmac'
+    'TerrenceMHS',
+    'vmService'
 ];
 
 async function fetchGameData() {
