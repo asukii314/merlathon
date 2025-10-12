@@ -61,6 +61,9 @@ async function fetchGameData() {
 }
 
 function stripUpgradeInfo(str) {
+    if (Array.isArray(str)) {
+         return str[0].split('+')[0];
+    }
   return str.split('+')[0];
 }
 
