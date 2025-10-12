@@ -12,6 +12,10 @@ const CONTESTANTS = [
     'vmService'
 ];
 
+window.addEventListener('load', () => { 
+    fetchGameData();
+});
+
 async function fetchGameData() {
     let rootElem = document.getElementById("deck-container");
     for(let contestant of CONTESTANTS) {
@@ -25,7 +29,7 @@ async function fetchGameData() {
             const data = await response.json();
 
             wrapper = document.createElement("div");
-            wrapper.className = "decklist-wrapper";
+            wrapper.className = `decklist-wrapper ${contestant}`;
 
             header = document.createElement("div");
             header.textContent = contestant;
