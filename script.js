@@ -3,12 +3,13 @@ const TWITCH_IDS = {
   TerrenceMHS: 26480150,
   asukii: 553300621,
   amaz: 43356746,
+  jmac: 1325562072,
 };
     
 // static placeholder for testing
 const CONTESTANTS = [
     'asukii',
-    'amaz'
+    'jmac'
 ];
 
 async function fetchGameData() {
@@ -42,7 +43,7 @@ async function fetchGameData() {
             }
             rootElem.appendChild(parent);
 
-            console.log(data); // do something with the data!
+//            console.log(data); // do something with the data!
     
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -50,9 +51,16 @@ async function fetchGameData() {
     }
 }
 
+function stripUpgradeInfo(str) {
+  return str.split('+')[0];
+}
 
+function getUpgradeInfo(str) {
+  const index = str.indexOf('+');
+  return index !== -1 ? str.slice(index) : '';
+}
 
-function renderCard(cardName, parent) {
+function renderCard(cardID, parent) {
     
     card = document.createElement("div");
     card.className = 'card-container';
@@ -60,7 +68,7 @@ function renderCard(cardName, parent) {
 
     card.innerHTML = `
         <div class="card test">
-            ${cardName}
+            ${CARD_DATA[stripUpgradeInfo(cardID)].NAME}${getUpgradeInfo(cardID)}
         </div>`;
 
     parent.appendChild(card);

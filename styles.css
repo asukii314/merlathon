@@ -3,5 +3,10 @@
 }
 
 .contestant-decklist {
-	margin-top: 15px;
+	margin: 15px 20px 0px 5px;
+}
+
+#deck-container {
+	display: flex;
+
 }
