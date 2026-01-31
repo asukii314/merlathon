@@ -59,6 +59,38 @@ async function fetchGameData() {
     charbtn.disabled = true;
     
     for(let contestant of CONTESTANTS[char]) {
+        if(!document.getElementsByClassName(`button-${contestant}`).length) {
+            let contestantBtn = document.createElement("button");
+            contestantBtn.textContent = contestant;
+            contestantBtn.className = `contestantBtn button-${contestant} char-inactive`
+
+            contestantBtn.addEventListener("click", function() {
+                let allBtns = document.getElementsByClassName('contestantBtn')
+                for(let cbtn of allBtns) {
+                    cbtn.classList.add('char-inactive');
+                }
+                let allDecks = document.getElementsByClassName('decklist-wrapper')
+                for(let deck of allDecks) {
+                    deck.classList.add('char-inactive');
+                }
+                let activePlayer = document.getElementsByClassName(`button-${contestant}`);
+                for(let cbtn of activePlayer) {
+                    cbtn.classList.remove('char-inactive');
+                }
+                console.log(contestant)
+                let activeDeck = document.getElementsByClassName(contestant);
+                for(let cd of activeDeck) {
+                    cd.classList.remove('char-inactive');
+                }
+
+            });
+
+            let btn_container = document.getElementById("contestant-btns");
+            btn_container.appendChild(contestantBtn);
+
+
+        }
+
         let id = TWITCH_IDS[contestant];
         const url = `https://slay-the-relics.baalorlord.tv/api/v2/game-state/${id}`;
         try {
@@ -69,7 +101,7 @@ async function fetchGameData() {
             const data = await response.json();
 
             wrapper = document.createElement("div");
-            wrapper.className = `decklist-wrapper ${contestant}`;
+            wrapper.className = `decklist-wrapper ${contestant} char-inactive`;
 
             header = document.createElement("div");
             header.textContent = contestant;

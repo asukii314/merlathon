@@ -3,6 +3,8 @@
   <head>
     <title>Merlathon Decklist Viewer</title>
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   </head>
   <body>
     <script src="CardData.js"></script>
@@ -12,6 +14,9 @@
     <button id='silent' onClick='redirectToChar("silent")'>Silent</button>
     <button id='defect' onClick='redirectToChar("defect")'>Defect</button>
     <p id='title'>Decklists:</p>
-    <div id='deck-container'></div>
+    <div id='decklists'>
+        <div id='contestant-btns'></div>
+        <div id='deck-container'></div>
+    </div>
   </body>
 </html>

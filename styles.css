@@ -20,10 +20,38 @@
 	width: 120px;
 }
 
+.contestantBtn {
+	margin-right: 10px;
+}
+
 .decklist-wrapper {
 	width: 50%;
 }
 
 .hide {
 	display: none;
+}
+
+#contestant-btns {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 20px;
+}
+
+
+
+@media screen and (max-width: 850px) {
+	#deck-container .char-inactive {
+		display: none;
+	}
+
+	.decklist-wrapper {
+		width: inherit;
+	}
+}
+
+@media screen and (min-width: 851px) {
+	#contestant-btns {
+		display: none;
+	}
 }
