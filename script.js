@@ -21,12 +21,12 @@ const CONTESTANTS = {
         'Panacea108',
         'TerrenceMHS'
     ],
-    silent: [
+    defect: [
         'Croven831',
         'JapaneseExport',
         'nickysts'
     ],
-    defect: [
+    silent: [
         'bookshelf2029',
         'KuroL__',
         'OnePunMan_'
