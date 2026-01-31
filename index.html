@@ -8,7 +8,10 @@
     <script src="CardData.js"></script>
     <script src="script.js"></script>
     <button id='refresh' onClick='fetchGameData().then((data) => console.log("fetched"))'>⟳ Refresh</button>
-    <p>Decklists:</p>
+    <button id='ironclad' onClick='redirectToChar("ironclad")'>Ironclad</button>
+    <button id='silent' onClick='redirectToChar("silent")'>Silent</button>
+    <button id='defect' onClick='redirectToChar("defect")'>Defect</button>
+    <p id='title'>Decklists:</p>
     <div id='deck-container'></div>
   </body>
 </html>

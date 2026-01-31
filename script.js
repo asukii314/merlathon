@@ -3,22 +3,62 @@ const TWITCH_IDS = {
   TerrenceMHS: 26480150,
   asukii: 553300621,
   amaz: 43356746,
-  jmac: 1325562072,
+  jmac_sts: 1325562072,
+  Panacea108: 105976794,
+  Croven831: 70537980,
+  JapaneseExport: 116377450,
+  nickysts: 261430360,
+  bookshelf2029: 497527623,
+  KuroL__: 411907314,
+  OnePunMan_: 115770251
 };
-    
+
+
 // static placeholder for testing
-const CONTESTANTS = [
-    'TerrenceMHS',
-    'vmService'
-];
+const CONTESTANTS = {
+    ironclad: [
+        'jmac_sts',
+        'Panacea108',
+        'TerrenceMHS'
+    ],
+    silent: [
+        'Croven831',
+        'JapaneseExport',
+        'nickysts'
+    ],
+    defect: [
+        'bookshelf2029',
+        'KuroL__',
+        'OnePunMan_'
+    ]
+}
+
+const urlParams = new URLSearchParams(window.location.search);
 
 window.addEventListener('load', () => { 
     fetchGameData();
 });
 
+
 async function fetchGameData() {
     let rootElem = document.getElementById("deck-container");
-    for(let contestant of CONTESTANTS) {
+    const char = urlParams.get("character");
+    
+    if(!CONTESTANTS[char]) {
+        document.getElementById('title');
+        title.classList.add('hide');
+        document.getElementById('refresh');
+        refresh.disabled = true;
+        return;
+    }
+
+    document.getElementById('title');
+    title.classList.remove('hide');
+
+    let charbtn = document.getElementById(char);
+    charbtn.disabled = true;
+    
+    for(let contestant of CONTESTANTS[char]) {
         let id = TWITCH_IDS[contestant];
         const url = `https://slay-the-relics.baalorlord.tv/api/v2/game-state/${id}`;
         try {
@@ -60,6 +100,19 @@ async function fetchGameData() {
     }
 }
 
+function redirectToChar(char) {
+    console.log("x")
+  const url = new URL(window.location.href);
+
+  // 2. Add or update the query parameter
+  // Use .set() to replace the value if the key already exists, or add it if not
+  // Use .append() if you want multiple parameters with the same key
+  url.searchParams.set("character", char);
+
+  // 3. Redirect to the new URL
+  window.location.href = url.toString();
+}
+
 function stripUpgradeInfo(str) {
     if (Array.isArray(str)) {
          return str[0].split('+')[0];
@@ -93,4 +146,4 @@ function renderCard(cardID, parent) {
 
     parent.appendChild(card);
 
-    }
+}
