@@ -10,7 +10,8 @@ const TWITCH_IDS = {
   nickysts: 261430360,
   bookshelf2029: 497527623,
   KuroL__: 411907314,
-  OnePunMan_: 115770251
+  OnePunMan_: 115770251,
+  PrydwenWZ: 36233407,
 };
 
 
@@ -29,7 +30,7 @@ const CONTESTANTS = {
     silent: [
         'bookshelf2029',
         'KuroL__',
-        'OnePunMan_'
+        'PrydwenWZ'
     ]
 }
 
